@@ -1,23 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>BMI Calculator</title>
+    <meta charset="UTF-8">
+    <title>Smart Health Assistant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        p.subtitle {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: #f4f9ff;
+            width: 220px;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #007BFF;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #444;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 14px 28px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>BMI Calculator</h2>
 
-    <form method="post">
-        Weight (kg):
-        <input type="number" step="any" name="weight" required><br><br>
-        Height (m):
-        <input type="number" step="any" name="height" required><br><br>
-        <button type="submit">Calculate</button>
-    </form>
+<div class="container">
+    <h1>🩺 Smart Health Assistant</h1>
+    <p class="subtitle">
+        Your friendly AI-based health helper for quick guidance
+    </p>
 
-    {% if result %}
-        <p><b>{{ result }}</b></p>
-    {% endif %}
+    <div class="features">
+        <div class="card">
+            <h3>📊 BMI Calculator</h3>
+            <p>
+                Check your Body Mass Index and understand your health category.
+            </p>
+        </div>
 
-    <a href="/">Back</a>
+        <div class="card">
+            <h3>🤒 Symptom Checker</h3>
+            <p>
+                Get possible reasons for common symptoms instantly.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🧠 Smart Guidance</h3>
+            <p>
+                Simple, safe and educational health information.
+            </p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a href="/bmi" class="btn">Calculate BMI</a>
+        <a href="/symptom" class="btn">Check Symptoms</a>
+    </div>
+
+    <div class="footer">
+        ⚠️ This website is for educational purposes only.  
+        It does NOT replace professional medical advice.
+    </div>
+</div>
+
 </body>
 </html>
