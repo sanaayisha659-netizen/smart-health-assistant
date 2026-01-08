@@ -1,101 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Symptoms Checker</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #e0f2fe, #bae6fd);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    <meta charset="UTF-8">
+    <title>Symptom Checker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #e8f2ff, #f7fbff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .card {
-      background: white;
-      width: 450px;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+        .container {
+            background: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
 
-    h2 {
-      margin-bottom: 10px;
-      color: #0f172a;
-    }
+        h1 {
+            margin-bottom: 10px;
+            color: #0b5ed7;
+        }
 
-    p {
-      color: #475569;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+        p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
 
-    textarea {
-      width: 100%;
-      height: 100px;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      font-size: 15px;
-      resize: none;
-    }
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #cfe2ff;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 20px;
+        }
 
-    button {
-      margin-top: 15px;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      background: #0284c7;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+        input:focus {
+            border-color: #0b5ed7;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
 
-    button:hover {
-      background: #0369a1;
-    }
+        button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: #0b5ed7;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
 
-    .result {
-      margin-top: 20px;
-      background: #f0f9ff;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 14px;
-      color: #0f172a;
-    }
+        button:hover {
+            background: #084298;
+        }
 
-    a {
-      display: block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #0284c7;
-      font-size: 14px;
-    }
-  </style>
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #e7f1ff;
+            color: #0b5ed7;
+            font-weight: 600;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0b5ed7;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="card">
-  <h2>🤒 Symptoms Checker</h2>
-  <p>Enter your symptoms to get possible reasons</p>
+<div class="container">
+    <h1>🤒 Symptom Checker</h1>
+    <p>Enter a symptom to get possible causes and guidance.</p>
 
-  <form method="post">
-    <textarea name="symptoms" placeholder="Example: fever, headache, cough" required></textarea>
-    <button type="submit">Check Symptoms</button>
-  </form>
+    <form method="POST" action="/symptom">
+        <input
+            type="text"
+            name="symptom"
+            placeholder="e.g. fever, headache, cough"
+            required
+        >
+        <button type="submit">Check Symptom</button>
+    </form>
 
-  {% if result %}
-  <div class="result">
-    {{ result }}
-  </div>
-  {% endif %}
+    {% if result %}
+        <div class="result">
+            {{ result }}
+        </div>
+    {% endif %}
 
-  <a href="/">⬅ Back to Home</a>
+    <a class="back" href="/">← Back to Home</a>
 </div>
 
 </body>
