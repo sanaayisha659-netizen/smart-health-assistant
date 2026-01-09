@@ -95,3 +95,9 @@ button:hover {
     text-decoration: none;
     color: #2563eb;
 }
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eaf7ff;
+    border-radius: 10px;
+}
