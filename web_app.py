@@ -101,9 +101,31 @@ def diabetes():
         }
 
     return render_template("diabetes.html", result=result)
+@app.route("/water", methods=["GET", "POST"])
+def water():
+    result = None
+
+    if request.method == "POST":
+        weight = float(request.form["weight"])
+        liters = round(weight * 0.033, 2)
+
+        if liters < 2:
+            tip = "Drink water regularly throughout the day."
+        elif liters <= 3:
+            tip = "Good hydration level. Keep it consistent."
+        else:
+            tip = "Increase water intake gradually. Avoid dehydration."
+
+        result = {
+            "liters": liters,
+            "tip": tip
+        }
+
+    return render_template("water.html", result=result)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
