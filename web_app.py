@@ -17,14 +17,22 @@ def bmi():
 
     if request.method == "POST":
         weight = float(request.form["weight"])
-        height = float(request.form["height"])
+        height = float(request.form["height"])  # now in inches
 
-        bmi_value, status = calculate_bmi(weight, height)
+        bmi_value = calculate_bmi(weight, height)
+
+        if bmi_value < 18.5:
+            status = "Underweight"
+        elif bmi_value < 25:
+            status = "Normal"
+        else:
+            status = "Overweight"
+
         result = f"BMI: {bmi_value} | Status: {status}"
-
         guidance = bmi_guidance(bmi_value)
 
     return render_template("bmi.html", result=result, guidance=guidance)
+
 
 @app.route("/bp", methods=["GET", "POST"])
 def bp():
@@ -163,6 +171,7 @@ def medicine():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
