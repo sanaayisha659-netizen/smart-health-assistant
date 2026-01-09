@@ -2,87 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Smart Health AI Assistant</title>
+    <title>Smart Health AI Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #74ebd5, #9face6);
-            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .box {
-            background: white;
-            width: 400px;
-            padding: 25px;
-            border-radius: 12px;
+        .chat-container {
+            width: 100%;
+            max-width: 420px;
+            height: 85vh;
+            background: #fff;
+            border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 10px;
-            width: 100%;
-            border: none;
+        .chat-header {
             background: #4f46e5;
             color: white;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #4338ca;
-        }
-
-        pre {
-            text-align: left;
-            background: #f4f4f4;
             padding: 15px;
-            margin-top: 20px;
-            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f4f6fb;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .user {
+            background: #4f46e5;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot {
+            background: white;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             white-space: pre-wrap;
         }
 
-        a {
-            display: block;
-            margin-top: 15px;
-            color: #4f46e5;
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input button {
+            margin-left: 8px;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chat-input button:hover {
+            background: #4338ca;
+        }
+
+        .back {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .back a {
             text-decoration: none;
+            color: #4f46e5;
+            font-size: 14px;
         }
     </style>
 </head>
-
 <body>
 
-<div class="box">
-    <h2>🤖 Smart Health AI Assistant</h2>
+<div class="chat-container">
+    <div class="chat-header">
+        🤖 Smart Health AI
+    </div>
 
-    <form method="POST">
-        <input type="text"
-               name="query"
-               placeholder="Ask about BMI, symptoms, medicines..."
-               required>
-        <button type="submit">Ask AI</button>
+    <div class="chat-messages">
+        <div class="message bot">
+Hello 👋  
+I’m your Smart Health AI Assistant.
+
+You can ask me about:
+• BMI & health  
+• Medicines  
+• Symptoms & remedies  
+• General health tips
+        </div>
+
+        {% if response %}
+        <div class="message user">
+            {{ request.form.query }}
+        </div>
+
+        <div class="message bot">
+            {{ response }}
+        </div>
+        {% endif %}
+    </div>
+
+    <form method="POST" class="chat-input">
+        <input type="text" name="query" placeholder="Ask about BMI, medicine, symptoms..." required>
+        <button type="submit">Send</button>
     </form>
 
-    {% if response %}
-        <pre>{{ response }}</pre>
-    {% endif %}
-
-    <a href="/">← Back to Home</a>
+    <div class="back">
+        <a href="/">← Back to Home</a>
+    </div>
 </div>
 
 </body>
