@@ -14,7 +14,7 @@ def ai_brain(user_input):
             "• Use the BMI calculator for accurate results"
         )
 
-    
+    # SYMPTOM CHECK
     symptom_result = analyze_symptom(text)
     if isinstance(symptom_result, list):
         reply = "🩺 AI Symptom Analysis:\n\n"
@@ -27,7 +27,7 @@ def ai_brain(user_input):
             reply += f"   Doctor Advice: {item['doctor']}\n\n"
         return reply
 
-    
+    # MEDICINE CHECK
     for alias, real_name in MEDICINE_ALIASES.items():
         if alias in text:
             med = MEDICINES.get(real_name)
@@ -39,7 +39,7 @@ def ai_brain(user_input):
                     f"Warning: {med['warning']}"
                 )
 
-    
+    # WATER
     if "water" in text:
         return (
             "💧 Water Intake Tip\n"
@@ -47,14 +47,14 @@ def ai_brain(user_input):
             "• Increase during heat or exercise"
         )
 
-    
+    # EXERCISE
     if "exercise" in text:
         return (
             "🏃 Exercise Tip\n"
             "• At least 30 minutes daily is recommended"
         )
 
-    
+    # DEFAULT RESPONSE
     return (
         "🤖 Smart Health AI Assistant\n"
         "I can help with:\n"
