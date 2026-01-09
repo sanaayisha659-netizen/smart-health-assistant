@@ -1,4 +1,5 @@
-from health_data import MEDICINES
+from medicine_data import MEDICINES
+
 
 def analyze_medicine(name):
     name = name.lower().strip()
