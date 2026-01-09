@@ -5,7 +5,6 @@ from symptom_checker import ai_symptom_analysis
 def ai_brain(user_input):
     text = user_input.lower()
 
-    # 🧠 BMI intent
     if "bmi" in text:
         return (
             "🤖 AI Assistant:\n"
@@ -14,7 +13,6 @@ def ai_brain(user_input):
             "Use the BMI calculator for accurate result."
         )
 
-    # 🧠 Symptom intent
     symptom_result = ai_symptom_analysis(text)
     if symptom_result:
         reply = "🤖 AI Symptom Analysis:\n"
@@ -27,7 +25,6 @@ def ai_brain(user_input):
             reply += f"Doctor Advice: {item['doctor']}\n"
         return reply
 
-    # 🧠 Medicine intent
     for alias, real_name in MEDICINE_ALIASES.items():
         if alias in text:
             med = MEDICINES.get(real_name)
@@ -39,7 +36,6 @@ def ai_brain(user_input):
                     f"Warning: {med['warning']}"
                 )
 
-    # 🧠 General health intent
     if "water" in text:
         return (
             "💧 AI Health Tip:\n"
@@ -53,7 +49,6 @@ def ai_brain(user_input):
             "At least 30 minutes of physical activity daily is recommended."
         )
 
-    # 🧠 Default reply
     return (
         "🤖 AI Assistant:\n"
         "I can help with:\n"
