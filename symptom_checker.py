@@ -1,8 +1,12 @@
-from health_data import SYMPTOMS
+def analyze_symptom(user_input):
+    user_input = user_input.lower().strip()
+    user_input = ALIASES.get(user_input, user_input)
 
-def analyze_symptom(symptom):
-    symptom = symptom.lower()
-    return SYMPTOMS.get(
-        symptom,
-        "Symptom not recognized. Please consult a doctor."
-    )
+    if user_input in SYMPTOMS:
+        return SYMPTOMS[user_input]
+
+    for key in SYMPTOMS:
+        if user_input in key or key in user_input:
+            return SYMPTOMS[key]
+
+    return "Symptom not recognised. Please consult a doctor."
