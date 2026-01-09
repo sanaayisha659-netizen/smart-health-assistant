@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <div class="main-card">
+        <h1>🩸 Diabetes Checker</h1>
+        <p>Enter your fasting blood sugar value</p>
+
+        <form method="POST">
+            <label>Fasting Blood Sugar (mg/dL)</label><br>
+            <input type="number" name="sugar" required><br><br>
+
+            <button type="submit">Check Diabetes</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <p><b>Status:</b> {{ result.status }}</p>
+            <p><b>Advice:</b> {{ result.advice }}</p>
+        </div>
+        {% endif %}
+
+        <br>
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
