@@ -54,3 +54,31 @@ MEDICINES = {
     "iodine solution": "Used for wound cleaning.",
     "bandage": "Used to cover and protect wounds."
 }
+BASE_MEDICINES = {
+    "paracetamol": ["dolo", "crocin", "calpol", "p 650", "dolokind"],
+    "ibuprofen": ["brufen", "ibuflam", "ibu", "combiflam"],
+    "cetirizine": ["cetzine", "zyrtec", "okacet", "allegra"],
+    "pantoprazole": ["pantocid", "pan 40", "pantodac"],
+    "omeprazole": ["omez", "omez d"],
+    "metformin": ["glyciphage", "glycomet", "glycomet gp"],
+    "amlodipine": ["amlodac", "amlong", "amlo"],
+    "azithromycin": ["azee", "azithral", "azi"],
+    "amoxicillin": ["amox", "novamox"],
+    "vitamin d": ["vit d", "vit d3", "cholecalciferol"],
+    "vitamin c": ["vit c", "limcee"],
+    "vitamin b12": ["b12", "mecobalamin"],
+}
+MEDICINE_ALIASES = {}
+
+for real_name, aliases in BASE_MEDICINES.items():
+    # exact aliases
+    for alias in aliases:
+        MEDICINE_ALIASES[alias] = real_name
+
+    # auto short forms
+    MEDICINE_ALIASES[real_name[:4]] = real_name
+    MEDICINE_ALIASES[real_name[:5]] = real_name
+
+    # spelling variations
+    MEDICINE_ALIASES[real_name.replace("a", "e")] = real_name
+    MEDICINE_ALIASES[real_name.replace("e", "a")] = real_name
