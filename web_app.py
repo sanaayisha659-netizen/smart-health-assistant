@@ -75,7 +75,35 @@ def cycle():
         }
 
     return render_template("cycle.html", result=result)
+@app.route("/diabetes", methods=["GET", "POST"])
+def diabetes():
+    result = None
+
+    if request.method == "POST":
+        sugar = int(request.form["sugar"])
+
+        if sugar < 70:
+            status = "Low Blood Sugar (Hypoglycemia)"
+            advice = "Eat immediately. Consult a doctor if frequent."
+        elif sugar <= 99:
+            status = "Normal"
+            advice = "Maintain healthy diet and exercise."
+        elif sugar <= 125:
+            status = "Prediabetes"
+            advice = "Reduce sugar intake, exercise regularly."
+        else:
+            status = "Diabetes"
+            advice = "Consult a doctor. Follow medical advice strictly."
+
+        result = {
+            "status": status,
+            "advice": advice
+        }
+
+    return render_template("diabetes.html", result=result)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
