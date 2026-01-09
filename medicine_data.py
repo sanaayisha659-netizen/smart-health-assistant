@@ -71,14 +71,15 @@ BASE_MEDICINES = {
 MEDICINE_ALIASES = {}
 
 for real_name, aliases in BASE_MEDICINES.items():
-    # exact aliases
     for alias in aliases:
-        MEDICINE_ALIASES[alias] = real_name
+        MEDICINE_ALIASES[alias.lower()] = real_name.lower()
 
-    # auto short forms
-    MEDICINE_ALIASES[real_name[:4]] = real_name
-    MEDICINE_ALIASES[real_name[:5]] = real_name
 
-    # spelling variations
+    MEDICINE_ALIASES[real_name[:4].lower()] = real_name.lower()
+    MEDICINE_ALIASES[real_name[:5].lower()] = real_name.lower()
+
     MEDICINE_ALIASES[real_name.replace("a", "e")] = real_name
     MEDICINE_ALIASES[real_name.replace("e", "a")] = real_name
+    MEDICINE_ALIASES[real_name.replace("amol", "imol")] = real_name
+    MEDICINE_ALIASES[real_name.replace("amol", "emol")] = real_name
+    MEDICINE_ALIASES[real_name.replace("ol", "al")] = real_name
