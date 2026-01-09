@@ -25,6 +25,29 @@ def symptom():
         symptom = request.form["symptom"]
         result = analyze_symptom(symptom)
     return render_template("symptom.html", result=result)
+from datetime import datetime, timedelta
 
+@app.route("/cycle", methods=["GET", "POST"])
+def cycle():
+    result = None
+
+    if request.method == "POST":
+        last_period = request.form["last_period"]
+        cycle_length = int(request.form["cycle_length"])
+
+        last_date = datetime.strptime(last_period, "%Y-%m-%d")
+        next_period = last_date + timedelta(days=cycle_length)
+        ovulation = next_period - timedelta(days=14)
+        fertile_start = ovulation - timedelta(days=5)
+        fertile_end = ovulation + timedelta(days=1)
+
+        result = {
+            "next_period": next_period.strftime("%d %B %Y"),
+            "ovulation": ovulation.strftime("%d %B %Y"),
+            "fertile": f"{fertile_start.strftime('%d %B')} - {fertile_end.strftime('%d %B %Y')}"
+        }
+
+    return render_template("cycle.html", result=result)
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
