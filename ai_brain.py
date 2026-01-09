@@ -25,16 +25,16 @@ def ai_brain(user_input):
             reply += f"Doctor Advice: {item['doctor']}\n"
         return reply
 
-    for alias, real_name in MEDICINE_ALIASES.items():
-        if alias in text:
-            med = MEDICINES.get(real_name)
-            if med:
-                return (
-                    f"💊 Medicine: {med['name']}\n"
-                    f"Uses: {med['uses']}\n"
-                    f"Dosage: {med['dosage']}\n"
-                    f"Warning: {med['warning']}"
-                )
+   for alias, real_name in MEDICINE_ALIASES.items():
+    if alias in text:
+        med = MEDICINES.get(real_name)
+        if med:
+            return (
+                f"💊 Medicine: {real_name.capitalize()}\n"
+                f"📌 Uses: {med}\n"
+                f"⚠️ Always follow doctor advice."
+            )
+
 
     if "water" in text:
         return (
