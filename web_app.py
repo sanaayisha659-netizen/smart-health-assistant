@@ -172,15 +172,15 @@ def medicine():
 @app.route("/ai", methods=["GET", "POST"])
 def ai():
     response = None
-
     if request.method == "POST":
-        user_input = request.form["message"]
+        user_input = request.form["query"]
         response = ai_brain(user_input)
 
     return render_template("ai.html", response=response)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
