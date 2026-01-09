@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from bmi_tool import calculate_bmi
 from symptom_checker import analyze_symptom
 from medicine_checker import analyze_medicine
+from health_guidance import bmi_guidance
 
 app = Flask(__name__)
 
@@ -12,12 +13,19 @@ def home():
 @app.route("/bmi", methods=["GET", "POST"])
 def bmi():
     result = None
+    guidance = None
+
     if request.method == "POST":
         weight = float(request.form["weight"])
         height = float(request.form["height"])
+
         bmi_value, status = calculate_bmi(weight, height)
         result = f"BMI: {bmi_value} | Status: {status}"
-    return render_template("bmi.html", result=result)
+
+        guidance = bmi_guidance(bmi_value)
+
+    return render_template("bmi.html", result=result, guidance=guidance)
+
 @app.route("/bp", methods=["GET", "POST"])
 def bp():
     result = None
@@ -155,6 +163,7 @@ def medicine():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
