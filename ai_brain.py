@@ -1,5 +1,5 @@
 from medicine_data import MEDICINES, MEDICINE_ALIASES
-from symptom_checker import 
+from symptom_checker import analyze_symptom
 from health_guidance import bmi_guidance
 
 
