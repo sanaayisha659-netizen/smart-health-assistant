@@ -1,0 +1,14 @@
+<h2>🤖 Smart Health AI Assistant</h2>
+
+<form method="post">
+    <input type="text" name="message"
+           placeholder="Ask anything about health..."
+           required>
+    <button type="submit">Ask AI</button>
+</form>
+
+{% if response %}
+<pre style="margin-top:20px;">
+{{ response }}
+</pre>
+{% endif %}
