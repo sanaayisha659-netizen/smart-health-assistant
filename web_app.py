@@ -17,6 +17,33 @@ def bmi():
         bmi_value, status = calculate_bmi(weight, height)
         result = f"BMI: {bmi_value} | Status: {status}"
     return render_template("bmi.html", result=result)
+@app.route("/bp", methods=["GET", "POST"])
+def bp():
+    result = None
+
+    if request.method == "POST":
+        systolic = int(request.form["systolic"])
+        diastolic = int(request.form["diastolic"])
+
+        if systolic < 90 or diastolic < 60:
+            status = "Low Blood Pressure"
+            advice = "Drink fluids, avoid sudden standing, consult doctor if frequent."
+        elif systolic <= 120 and diastolic <= 80:
+            status = "Normal Blood Pressure"
+            advice = "Maintain healthy diet and regular exercise."
+        elif systolic <= 139 or diastolic <= 89:
+            status = "Pre-High Blood Pressure"
+            advice = "Reduce salt, manage stress, monitor regularly."
+        else:
+            status = "High Blood Pressure"
+            advice = "Consult a doctor, reduce salt, exercise regularly."
+
+        result = {
+            "status": status,
+            "advice": advice
+        }
+
+    return render_template("bp.html", result=result)
 
 @app.route("/symptom", methods=["GET", "POST"])
 def symptom():
@@ -50,4 +77,5 @@ def cycle():
     return render_template("cycle.html", result=result)
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
