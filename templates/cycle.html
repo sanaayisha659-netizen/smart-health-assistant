@@ -10,22 +10,27 @@
 <div class="page">
     <div class="main-card">
         <h1>🩸 Menstrual Cycle Tracker</h1>
-        <p>Enter your last period date to estimate your next cycle.</p>
+        <p>Track your next period and fertile window</p>
 
-        <form>
+        <form method="POST">
             <label>Last Period Date</label><br>
-            <input type="date" required><br><br>
+            <input type="date" name="last_period" required><br><br>
 
-            <label>Average Cycle Length (days)</label><br>
-            <input type="number" value="28" min="21" max="35"><br><br>
+            <label>Cycle Length (days)</label><br>
+            <input type="number" name="cycle_length" value="28" min="21" max="35" required><br><br>
 
             <button type="submit">Track Cycle</button>
         </form>
 
-        <p class="note">
-            This tracker gives approximate dates. Always consult a doctor for medical advice.
-        </p>
+        {% if result %}
+        <div class="result-box">
+            <p><b>Next Period:</b> {{ result.next_period }}</p>
+            <p><b>Ovulation Day:</b> {{ result.ovulation }}</p>
+            <p><b>Fertile Window:</b> {{ result.fertile }}</p>
+        </div>
+        {% endif %}
 
+        <br>
         <a href="/">← Back to Home</a>
     </div>
 </div>
