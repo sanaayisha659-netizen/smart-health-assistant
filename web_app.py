@@ -141,9 +141,13 @@ def water_reminder():
             current += timedelta(hours=2)
 
     return render_template("water_reminder.html", reminders=reminders)
+@app.route("/guidance")
+def guidance():
+    return render_template("guidance.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
