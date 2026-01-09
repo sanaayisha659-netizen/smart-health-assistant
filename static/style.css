@@ -113,3 +113,13 @@ button:hover {
     background: #eef9f3;
     border-radius: 10px;
 }
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    padding: 8px;
+    background: #e6f7ff;
+    margin: 6px 0;
+    border-radius: 6px;
+}
