@@ -72,3 +72,106 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Health Assistant</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* AI SEARCH HIGHLIGHT */
+        .ai-search-container {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .ai-search-container h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .ai-search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .ai-search-box input {
+            flex: 1;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .ai-search-box button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .ai-search-box button:hover {
+            background: #3b8edc;
+        }
+
+        /* NORMAL CARDS */
+        .cards {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔥 AI SEARCH BOT (HIGHLIGHTED) -->
+<div class="ai-search-container">
+    <h2>🤖 Smart Health AI Search</h2>
+
+    <form action="/ai" method="POST" class="ai-search-box">
+        <input type="text" name="query" placeholder="Ask about BMI, symptoms, medicines..." required>
+        <button type="submit">Ask</button>
+    </form>
+</div>
+
+<!-- NORMAL FEATURES -->
+<div class="cards">
+    <a href="/bmi" class="card">📊 BMI Checker</a>
+    <a href="/bp" class="card">❤️ BP Checker</a>
+    <a href="/diabetes" class="card">🩸 Diabetes Checker</a>
+    <a href="/water" class="card">💧 Water Tracker</a>
+    <a href="/medicine" class="card">💊 Medicine Checker</a>
+</div>
+
+</body>
+</html>
