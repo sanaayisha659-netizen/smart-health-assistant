@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Pressure Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <div class="main-card">
+        <h1>🩺 Blood Pressure Checker</h1>
+        <p>Enter your BP values to know your status</p>
+
+        <form method="POST">
+            <label>Systolic (Upper BP)</label><br>
+            <input type="number" name="systolic" required><br><br>
+
+            <label>Diastolic (Lower BP)</label><br>
+            <input type="number" name="diastolic" required><br><br>
+
+            <button type="submit">Check BP</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <p><b>Status:</b> {{ result.status }}</p>
+            <p><b>Advice:</b> {{ result.advice }}</p>
+        </div>
+        {% endif %}
+
+        <br>
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
