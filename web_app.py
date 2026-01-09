@@ -122,9 +122,29 @@ def water():
         }
 
     return render_template("water.html", result=result)
+from datetime import datetime, timedelta
+
+@app.route("/water-reminder", methods=["GET", "POST"])
+def water_reminder():
+    reminders = []
+
+    if request.method == "POST":
+        start = request.form["start"]
+        end = request.form["end"]
+
+        start_time = datetime.strptime(start, "%H:%M")
+        end_time = datetime.strptime(end, "%H:%M")
+
+        current = start_time
+        while current <= end_time:
+            reminders.append(current.strftime("%I:%M %p"))
+            current += timedelta(hours=2)
+
+    return render_template("water_reminder.html", reminders=reminders)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
