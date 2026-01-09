@@ -3,6 +3,7 @@ from bmi_tool import calculate_bmi
 from symptom_checker import analyze_symptom
 from medicine_checker import analyze_medicine
 from health_guidance import bmi_guidance
+from ai_brain import ai_brain
 
 app = Flask(__name__)
 
@@ -168,9 +169,19 @@ def medicine():
         med = request.form["medicine"]
         result = analyze_medicine(med)
     return render_template("medicine.html", result=result)
+@app.route("/ai", methods=["GET", "POST"])
+def ai():
+    response = None
+
+    if request.method == "POST":
+        user_input = request.form["message"]
+        response = ai_brain(user_input)
+
+    return render_template("ai.html", response=response)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
