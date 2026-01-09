@@ -1,65 +1,34 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #6ee7f9, #a7f3d0);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menstrual Cycle Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
 
-.page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+<div class="page">
+    <div class="main-card">
+        <h1>🩸 Menstrual Cycle Tracker</h1>
+        <p>Enter your last period date to estimate your next cycle.</p>
 
-.main-card {
-    background: white;
-    width: 90%;
-    max-width: 900px;
-    padding: 40px;
-    border-radius: 18px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
+        <form>
+            <label>Last Period Date</label><br>
+            <input type="date" required><br><br>
 
-.title {
-    font-size: 32px;
-    margin-bottom: 5px;
-}
+            <label>Average Cycle Length (days)</label><br>
+            <input type="number" value="28" min="21" max="35"><br><br>
 
-.subtitle {
-    color: #555;
-    margin-bottom: 30px;
-}
+            <button type="submit">Track Cycle</button>
+        </form>
 
-.card-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+        <p class="note">
+            This tracker gives approximate dates. Always consult a doctor for medical advice.
+        </p>
 
-.card {
-    width: 230px;
-    padding: 20px;
-    border-radius: 15px;
-    text-decoration: none;
-    color: black;
-    background: #f8fafc;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    transition: 0.3s;
-}
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
 
-.card:hover {
-    transform: translateY(-10px);
-    background: #e0f2fe;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.disclaimer {
-    margin-top: 30px;
-    font-size: 13px;
-    color: #666;
-}
+</body>
+</html>
