@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Medicine Guide</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Medicine Checker</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(135deg, #6ee7f9, #7aa7ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      width: 320px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 15px;
+      background: #eef2ff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="box">
+    <h2>💊 Medicine Checker</h2>
 
-<div class="page">
-    <div class="main-card">
-        <h1>💊 Medicine Names & Uses</h1>
-        <p>Educational information only</p>
+    <form method="POST">
+      <input type="text" name="medicine" placeholder="Enter medicine name" required>
+      <button type="submit">Check Medicine</button>
+    </form>
 
-        <form method="POST">
-            <input type="text"
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+
+    <br>
+    <a href="/">⬅ Back to Home</a>
+  </div>
+</body>
+</html>
