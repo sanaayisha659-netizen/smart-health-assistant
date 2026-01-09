@@ -101,3 +101,9 @@ button:hover {
     background: #eaf7ff;
     border-radius: 10px;
 }
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f9ff;
+    border-radius: 10px;
+}
