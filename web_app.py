@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from bmi_tool import calculate_bmi
 from symptom_checker import analyze_symptom
+from medicine_checker import analyze_medicine
 
 app = Flask(__name__)
 
@@ -144,9 +145,17 @@ def water_reminder():
 @app.route("/guidance")
 def guidance():
     return render_template("guidance.html")
+@app.route("/medicine", methods=["GET", "POST"])
+def medicine():
+    result = None
+    if request.method == "POST":
+        med = request.form["medicine"]
+        result = analyze_medicine(med)
+    return render_template("medicine.html", result=result)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
