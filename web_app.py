@@ -17,7 +17,7 @@ def bmi():
 
     if request.method == "POST":
         weight = float(request.form["weight"])
-        height = float(request.form["height"])  # now in inches
+        height = float(request.form["height"]) 
 
         bmi_value = calculate_bmi(weight, height)
 
@@ -171,6 +171,7 @@ def medicine():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000)
+
 
 
 
