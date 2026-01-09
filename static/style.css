@@ -123,3 +123,18 @@ ul li {
     margin: 6px 0;
     border-radius: 6px;
 }
+.guidance-box {
+    background: #f0f9ff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.guidance-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.guidance-box li {
+    padding: 6px 0;
+}
