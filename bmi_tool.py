@@ -1,5 +1,7 @@
-def calculate_bmi(weight, height):
-    bmi = weight / (height * height)
+def calculate_bmi(weight, height_in_inches):
+    height_in_meters = height_in_inches*0.0254
+    bmi = weight/(height_in_meters**2)
+    return round(bmi,2)
 
     if bmi < 18.5:
         status = "Underweight"
@@ -11,3 +13,4 @@ def calculate_bmi(weight, height):
         status = "Obese"
 
     return round(bmi, 2), status
+
