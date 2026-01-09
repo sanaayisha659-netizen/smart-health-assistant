@@ -1,4 +1,4 @@
-from medicine_data import MEDICINES
+from medicine_data import MEDICINES, MEDICINE_ALIASES
 
 def analyze_medicine(name):
     name = name.lower().strip()
@@ -6,8 +6,13 @@ def analyze_medicine(name):
     if name in MEDICINES:
         return MEDICINES[name]
 
-    for key in MEDICINES:
-        if name in key or key in name:
-            return MEDICINES[key]
+    if name in MEDICINE_ALIASES:
+        real_name = MEDICINE_ALIASES[name]
+        return MEDICINES.get(real_name)
+
+    for key in MEDICINE_ALIASES:
+        if key in name or name in key:
+            real_name = MEDICINE_ALIASES[key]
+            return MEDICINES.get(real_name)
 
     return "Medicine not found. Please consult a healthcare professional."
