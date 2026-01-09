@@ -91,6 +91,22 @@
     Your BMI: {{ result }}
   </div>
   {% endif %}
+  {% if guidance %}
+<div style="margin-top:20px; padding:15px; background:#f1f7ff; border-radius:10px;">
+    <h3>🧠 AI Health Guidance</h3>
+
+    <p><b>Category:</b> {{ guidance.category }}</p>
+    <p><b>Reason:</b> {{ guidance.reason }}</p>
+
+    <h4>Recommended Actions:</h4>
+    <ul>
+        {% for tip in guidance.tips %}
+        <li>{{ tip }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 
   <a href="/">⬅ Back to Home</a>
 </div>
