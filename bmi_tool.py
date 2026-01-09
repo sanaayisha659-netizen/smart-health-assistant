@@ -1,5 +1,5 @@
-def calculate_bmi(weight, height_in_inches):
-    height_in_meters = height_in_inches*0.0254
+def calculate_bmi(weight, height_in_cm):
+    height_in_meters = height_in_cm/100
     bmi = weight/(height_in_meters**2)
     return round(bmi,2)
 
@@ -13,4 +13,5 @@ def calculate_bmi(weight, height_in_inches):
         status = "Obese"
 
     return round(bmi, 2), status
+
 
