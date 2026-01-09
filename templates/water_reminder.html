@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Reminder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <div class="main-card">
+        <h1>⏰ Water Reminder</h1>
+        <p>Get reminders every 2 hours</p>
+
+        <form method="POST">
+            <label>Wake-up Time</label><br>
+            <input type="time" name="start" required><br><br>
+
+            <label>Sleep Time</label><br>
+            <input type="time" name="end" required><br><br>
+
+            <button type="submit">Generate Reminders</button>
+        </form>
+
+        {% if reminders %}
+        <div class="result-box">
+            <h3>Today's Reminder Times 💧</h3>
+            <ul>
+                {% for time in reminders %}
+                    <li>{{ time }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <br>
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
