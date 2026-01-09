@@ -10,8 +10,10 @@ def analyze_medicine(name):
         real_name = MEDICINE_ALIASES[name]
         return MEDICINES.get(real_name)
 
-    for key in MEDICINE_ALIASES:
-        if key in name or name in key:
+    for alias, real_name in MEDICINE_ALIASES.items():
+        if alias in name or name in alias:
+            return MEDICINES.get(real_name)
+
             real_name = MEDICINE_ALIASES[key]
             return MEDICINES.get(real_name)
 
